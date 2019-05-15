@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 04 Maj 2019, 20:32
+-- Czas generowania: 15 Maj 2019, 22:10
 -- Wersja serwera: 10.1.38-MariaDB
 -- Wersja PHP: 7.3.3
 
@@ -36,7 +36,7 @@ CREATE TABLE `uzytkownicy` (
   `drewno` int(11) NOT NULL,
   `kamien` int(11) NOT NULL,
   `zboze` int(11) NOT NULL,
-  `dnipremium` int(11) NOT NULL
+  `dnipremium` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
@@ -44,7 +44,8 @@ CREATE TABLE `uzytkownicy` (
 --
 
 INSERT INTO `uzytkownicy` (`id`, `user`, `pass`, `email`, `drewno`, `kamien`, `zboze`, `dnipremium`) VALUES
-(1, 'adam', '$2y$10$HnYpt4JrQjd6PLxpwtWs3eLW0A88pDhNN6YwQ2nmIMX7uLtH6cJd6', 'adam@gmail.com', 213, 5675, 342, 0);
+(1, 'adam', '$2y$10$HnYpt4JrQjd6PLxpwtWs3eLW0A88pDhNN6YwQ2nmIMX7uLtH6cJd6', 'adaam@gmail.com', 213, 5675, 342, '2017-01-15 09:30:15'),
+(14, 'krzysztof', '$2y$10$bQapYUriblXzGlyPPb.V4OMdrOUsSjwgBnnAyrkvav9eLXwGN5y.u', 'krzysztof@gmail.com', 100, 100, 100, '2019-05-29 21:33:55');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -65,7 +66,7 @@ ALTER TABLE `uzytkownicy`
 -- AUTO_INCREMENT dla tabeli `uzytkownicy`
 --
 ALTER TABLE `uzytkownicy`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
