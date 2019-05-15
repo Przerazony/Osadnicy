@@ -9,3 +9,5 @@ Plik "uzytkownicy.sql" to plik zakładający tabelę potrzebną do działania st
 Gdy zakończymy konfigurację przenosimy cały folder z plikami na serwer, w przypadku XAMPP jest to folder "htdocs" w lokalizacji instalacji XAMPP. Najlepiej stworzyć osobny podfolder np "gra". Docelowo pliki znajdują się w (...)\xampp\htdocs\gra dzięki temu w przeglądarce przy włączonym serwerze wpisując http://localhost/gra/ uruchomimy stronę logowania domyślnie "index.php"
 
 logowanie zostało zabezpieczone przed podstawowym atakiem injection a rejestracja walidacją oraz sanityzacją wprowadzonych danych. Dostępna jest również walidacja captcha jednak możliwe iż na własne potrzeby będzie trzeba stworzyć w google własne klucze.
+
+Skrypt: rejestracja.php wymaga podania własnych kluczy reCAPTCHA site-key oraz secret

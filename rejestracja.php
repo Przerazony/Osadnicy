@@ -148,7 +148,8 @@ if (isset($_POST['regulamin'])) $_SESSION['fr_regulamin'] = true;
                     
                     //testy zaliczone dodajemy gracza do bazy
                     /**sprawdzamy czy się uda i dopiero działamy */
-                    if($polaczenie->query("INSERT INTO uzytkownicy VALUES (NULL,'$nick','$haslo_hash','$email',100,100,100,14)"))
+                    if($polaczenie->query("INSERT INTO uzytkownicy VALUES (NULL,'$nick','$haslo_hash','$email',100,100,100,now() + INTERVAL 14 DAY)"))
+                    /**funckja myslq NOW zwraca nam bieżącą datę i czas jeśli chcemy dodać coś to dodajemy interwał czasowy*/
                     {
                         $_SESSION['udanarejestracja'] = true;
                         header('Location: witamy.php');

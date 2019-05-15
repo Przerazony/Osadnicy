@@ -1,0 +1,54 @@
+echo time()."<br/>";
+
+        /**mktime(hour,minute,second,month,day,year) funckja przeliczaj¹ca liczbê sekund dla wybranej daty od pocz¹tku epoki UNIX'a */
+        echo mktime(19,37,0,4,2,2005)."<br/>";
+
+        /**ta funkcja pozwala nam dostaæ nawet liczbê mikrosekund jaka aktualnie up³ynê³a
+         * wystêpuje sklejenie dwóch liczb
+         * 1-wsza to iloœæ mikrosekund (milionowe czêœci sekundy i le ich up³ynê³o)
+         * 2-ga to iloœæ znana z time()
+         * wywo³anie: echo microtime()."<br/>";*/
+         
+         /**tutaj dzia³amy z dat¹ date('');
+          *  Y - rok w zapisie czterocyfrowym
+          *  y - rok w zapisie dwucyfrowym
+          *  M - tekstowy, trzyliterowy zapis miesi¹ca w jêzyku angielskim
+          *  m - miesi¹c w zapisie dwucyfrowym z ew wiod¹cym zerem
+          *  n - numer miesi¹ca w zapisie jedno lub dwucyfrowym bez wiod¹cego zera
+          *  D - angielski 3literowy skrót dnia tygodnia
+          *  d - dzieñ miesi¹ca w zapisie dwucyfrowym z poprzedzaj¹cym zerem
+          *  j - dzieñ miesi¹ca w zapisie jedno lub dwucyfrowym bez wiod¹cego zera
+          *  H - godzina w formacie 24-godzinnym, z wiod¹cym zerem: 00..23
+          *  h - godzina w formacie 12 godzinnym z wiod¹cym zerem
+          *  G - godzina w formacie 24-godzinnym bez wiod¹cego zera 0..23
+          *  g - godzina w foramcie 12 godzinnym bez wiod¹cego zera 1..12
+          *  i - minut
+          *  s - sekund
+          */
+          /**wolnoœæ w formatowaniu wyci¹ganej w ciapkach daty */
+          /**MYSQL DATETIME YYYY-MM-DD HH:MM:SS */
+         echo date('Y-m-d')."<br>";
+         echo date('d.m.Y')."<br>";
+         echo date('Y-m-d H:i:s')."<br>";
+
+/**uzyskanie daty nie funckj¹ a obiektem: */
+/**
+ * $dataczas - obiekt = reprezentant klasy
+ * format('Y-m-d H:i:s') - metoda = funkcja wewn¹trz klasy, wywo³ana na rzecz obiektu
+ */
+
+$dataczas = new DateTime();
+/** "->" operator strza³ki pozwala dostaæ siê do w³aœciwoœci albo metody obiektu */
+/**jak zobaczyæ zawartoœæ obiektu jedn¹ komend¹ w php: print_r(nazwaobiektu) */
+echo $dataczas->format('Y-m-d H:i:s')."<br/>".print_r($dataczas);
+/**walidacja poprawnoœci przyk³adowej daty: */
+/**za³ó¿my ¿e pobraliœmy metod¹ post 3 zmienne */
+    $dzien = 26;
+    $miesiac = 7;
+    $rok = 1975;
+    /**checkdate(miesiac,dzien,rok) */
+    if(checkdate($miesiac,$dzien,$rok)==true)
+    {
+        echo "<br>Poprawna data!";
+    }
+    else echo "<br>Niepoprawna data!";

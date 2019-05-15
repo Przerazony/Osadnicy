@@ -41,10 +41,37 @@ if(!isset($_SESSION['zalogowany']))
         echo " | <strong>Kamień</strong> ".$_SESSION['kamien'];
         echo " | <strong>Zboże</strong> ".$_SESSION['zboze']."</p>";
         echo "<p><b>E-mail</b> ".$_SESSION['email'];
-        echo "<br/><b>Dni premium:</b> ".$_SESSION['dnipremium']."</p>";
+        echo "<br/><b>Data wygaśnięcia premium:</b> ".$_SESSION['dnipremium']."</p>";
         
-    
-    
+        /**w phpMyadmin należy zmienić strukturę tablicy aby czas premium był w datetime */
+        /**data odczytana z serwera - obiekt $dataczas
+         * data wygaśnięcią premium $_SESSION['dnipremium']
+         * musimy obliczyć różnicę by wiedzieć za ile wygaśnie premum
+         */
+        $dataczas = new DateTime('2017-02-06 22:10:59');
+        echo "Data i czas serwera: " .$dataczas->format('Y-m-d H:i:s')."<br/>";
+/**klasa datetime zawiera metodę diff() która ułatwia duuuuuuużo, szybko liczymy różnicę pomidzy dwoma obiektami datetime
+ * createFromFormat() - metoda przenosi datę wyjętą z bazy do nowego drugiego obiektu datetime
+ */
+/** :: operator zasięgu, czyli Z KLASY datetime wywołaj METODE o nazwie createFromFormat
+ * czyli utwórz nowy obiekt na podstawie tego co wyjęliśmy z bazy
+*/
+ $koniec = DateTime::createFromFormat('Y-m-d H:i:s',$_SESSION['dnipremium']);
+/** "->" operator strzałki pozwala dostać się do właściwości albo metody obiektu 
+ * innymi słowy użyj metody
+*/
+/**kolejność jest dowolna, różnica czasu między dwoma momentami zawsze jest dodatnia */
+ $roznica = $dataczas->diff($koniec);
+        
+ if($dataczas<$koniec)
+ {
+     echo "Pozostało premium: ".$roznica->format("%Y lat, %m mies, %d dni, %h godz, %i min, %s sek");
+ }
+else
+{
+    echo "Premium nieaktywne od: ".$roznica->format("%Y lat, %m mies, %d dni, %h godz, %i min, %s sek");
+}
+
     ?>
 
 
